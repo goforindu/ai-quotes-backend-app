@@ -10,7 +10,9 @@ app.use(cors());
 app.use(express.json());
 
 const apiKey = process.env.OPENAI_API_KEY;
-
+app.get("/", (req, res) => {
+  res.send("🎉 Backend is up and running!");
+});
 app.post("/generate-quote", async (req, res) => {
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
