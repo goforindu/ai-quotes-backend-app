@@ -7,9 +7,14 @@ const {
   updateQuote,
   deleteQuote,
 } = require("../controllers/quoteController");
+const { restrictAccess } = require("../middleware/auth.js");
+// Public route – anyone can read quotes
+router.get("/", getAllQuotes);
 
-router.route("/").get(getAllQuotes).post(createQuote);
-
-router.route("/:id").get(getQuoteById).put(updateQuote).delete(deleteQuote);
+// Protected routes – only with API key
+router.post("/", restrictAccess, createQuote);
+router.get("/:id", restrictAccess, getQuoteById);
+router.put("/:id", restrictAccess, updateQuote);
+router.delete("/:id", restrictAccess, deleteQuote);
 
 module.exports = router;
