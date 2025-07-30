@@ -6,6 +6,14 @@ const quoteSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    mood: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
     author: {
       type: String,
       default: "Shree Krishna",
