@@ -3,11 +3,12 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const quoteRoutes = require("./routes/quoteRoutes");
 const errorHandler = require("./middleware/errorHandler");
-
+const cors = require("cors");
 dotenv.config();
 connectDB();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Routes
